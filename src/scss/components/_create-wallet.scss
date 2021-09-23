@@ -1,0 +1,29 @@
+#toggler {
+    color: $theme-blue;
+}
+#toggler:hover {
+    color: darken($theme-blue, 20%);
+}
+
+.custodian-url-text {
+    padding: 5px 15px;
+    font-size: smaller;
+    color: $text-secondary;
+}
+
+.some-overlay { 
+    visibility: hidden;
+
+}
+
+// Logo
+.logo.fad{
+    font-size: 3.5rem;
+    margin-top: -1rem;
+    margin-right: 0.5rem;
+}
+
+.sync-btn {
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
+}

@@ -1,0 +1,128 @@
+{
+  "name": "blindmixer",
+  "productName": "blndmxr-mixer-electron",
+  "version": "0.0.1",
+  "description": "A desktop implementation of the blindmixer mixing wallet utilizing tor",
+  "main": ".webpack/main",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish --platform=linux",
+    "prettier": "prettier --single-quote --trailing-comma es5 --print-width 160 --write \"src/**/*.{ts,tsx}\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "the blindmixer company",
+    "email": "noemailfound@users.noreply.github.com"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "static/icons/icon",
+        "name": "blindmixer",
+        "executableName": "blindmixer",
+        "win32metadata": {
+          "FileDescription": "A blindmixer product.",
+          "ProductName": "blindmixer"
+        }
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "icon": "static/icons/icon.ico",
+            "setupIcon": "static/icons/icon.ico",
+            "authors": "the blindmixer company",
+            "exe": "blindmixer.exe",
+            "title": "blindmixer",
+            "name": "blindmixer"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "options": {
+              "preDepends": "tor",
+              "icon": "static/icons/icon.png",
+              "homepage": "https://blindmixer.com",
+              "name": "blindmixer",
+              "version": "0.0.1",
+              "description": "dem' blindmixer wallet loader"
+            }
+          }
+        }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/renderer/index.html",
+                  "js": "./src/renderer/index.tsx",
+                  "name": "main_window",
+                  "preload": {
+                    "js": "./src/preload/login.ts"
+                  }
+                },
+                {
+                  "html": "./src/renderer/wallet.html",
+                  "js": "./src/renderer/wallet.tsx",
+                  "name": "second_window",
+                  "preload": {
+                    "js": "./src/preload/wallet.ts"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    }
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "mousetrap": "^1.6.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-toastify": "^6.0.5",
+    "reactstrap": "^8.4.1"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "6.0.0-beta.45",
+    "@electron-forge/maker-deb": "6.0.0-beta.45",
+    "@electron-forge/maker-rpm": "6.0.0-beta.45",
+    "@electron-forge/maker-squirrel": "6.0.0-beta.45",
+    "@electron-forge/maker-zip": "6.0.0-beta.45",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.45",
+    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "@types/react": "^16.9.36",
+    "@types/react-dom": "^16.9.8",
+    "@types/reactstrap": "^8.4.2",
+    "@types/source-map-support": "^0.5.0",
+    "copy-webpack-plugin": "^5.0.5",
+    "css-loader": "^3.0.0",
+    "electron": "7.2.4",
+    "electron-squirrel-startup": "^1.0.0",
+    "file-loader": "^4.2.0",
+    "fork-ts-checker-webpack-plugin": "^3.1.0",
+    "node-loader": "^0.6.0",
+    "node-sass": "^4.13.1",
+    "prettier": "^2.1.1",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.2"
+  }
+}

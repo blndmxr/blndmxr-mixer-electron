@@ -1,0 +1,30 @@
+.full-page-left-side {
+    grid-area: left;
+    background-color: $theme-blue;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  h1.blindmixer {
+    text-transform: lowercase;
+    letter-spacing: 0.03rem;
+    font-weight: 600;
+    top: 10px;
+    position: absolute;
+    align-self: flex-start;
+    margin: 1rem 2rem;
+  }
+
+  .full-page-left-side .secondary-text {
+      font-size: 1.2rem;
+  }
+
+  .main-heading {
+    margin-bottom: 3rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+  }
